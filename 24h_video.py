@@ -37,7 +37,6 @@ def add(img1, img2, top, left): #put img2 on img1 / img2の上にimg1を載せ�
 # encoder(for mp4)
 fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
 # output file name, encoder, fps, size(fit to image size)
-#video = cv2.VideoWriter('takingphotos_24h.mp4', fourcc, 1, (1920, 1080))
 video = cv2.VideoWriter('takingphotos_24h.mp4', fourcc, 1, (1080, 1920))
 
 
@@ -59,7 +58,6 @@ for i in range(86400):
     if len(files) == 0:
         frame = cv2.imread("white_back.jpg") #blank
         frame = cv2.putText(frame, hh + ":" + mm + ":" + ss, (700, 960), cv2.FONT_HERSHEY_PLAIN, 5, (0, 0, 0), 5, cv2.LINE_AA)
-        #frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
     else:
         file = random.choice(files) #Select one image at random if multiple images are available / 2枚以上あるときランダムに取り出す
         img = cv2.imread(file)
