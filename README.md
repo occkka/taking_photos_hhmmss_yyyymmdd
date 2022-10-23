@@ -5,7 +5,7 @@
 Organise the image files according to the rules here  
 (EN)https://miyukioka.com/making-your-own-taking-photos-hhmmss-hhmmss-yyyymmdd-yyyymmdd/
 
-1. Put all organised image files in　"all_photo" folder.
+1. Put all organised image files in "all_photo" folder.
 2. To create 24 images, run "24h_images.py"
 3. To create a 24h-video, run "24h_video.py"
 
