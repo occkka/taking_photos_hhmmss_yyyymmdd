@@ -17,7 +17,7 @@ Tips:
 - When creating 24 images, try to divide the time period, e.g. one year, and reduce the number of photos so that you can generate nice and comparable results.
 - Conversely, when making a 24-hour video, the more photos you have, the better the result.
 
-  
+***
   
 まずルールに則って画像ファイルを整理する  
 (JP)https://miyukioka.com/ja/「写真を撮る（hhmmss-hhmmss-yyyymmdd-yyyymmdd）」をつくる/
