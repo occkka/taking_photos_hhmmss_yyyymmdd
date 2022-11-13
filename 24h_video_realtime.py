@@ -35,7 +35,7 @@ while True:
     time_now = hh + mm + ss + "_"
 
     files = glob.glob("all_photos/*" + time_now + "*")
-    print(files)
+    #print(files)
 
     black_back = cv2.imread("black_back.jpg")
 
@@ -68,4 +68,3 @@ while True:
     cv2.imshow('window', frame)
     cv2.waitKey(1000)
     cv2.destroyAllWindows()
-
