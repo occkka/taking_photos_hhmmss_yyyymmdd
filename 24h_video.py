@@ -51,7 +51,7 @@ for i in range(86400):
     time_now = hh + mm + ss + "_" #for file search / ファイル検索のため
 
     files = glob.glob("all_photos/" + time_now + "*")
-    print(files)
+    #print(files)
 
     black_back = cv2.imread("black_back.jpg")
 
