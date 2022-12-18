@@ -1,4 +1,4 @@
-# taking photos(hhmmss, yyyymmdd)
+# taking photos(hhmmss-hhmmss, yyyymmdd-yyyymmdd)
 
 ![15時_small-2](https://user-images.githubusercontent.com/47744839/197381104-b73310e5-9810-4376-b933-0e8fe2735f31.jpg)
 
