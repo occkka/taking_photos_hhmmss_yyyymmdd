@@ -15,6 +15,7 @@ if not os.path.exists(output_dir):
 for i in range(0, 24):
     tgt_h = str(i).zfill(2)
     files = glob.glob("all_photos/" + tgt_h + "*")
+    
 
     images = []
     for file in sorted(files):
