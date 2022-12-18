@@ -19,6 +19,10 @@ for i in range(0, 24):
     for file in sorted(files):
         img = cv2.imread(file)
         if img is not None:
+             # 縦向きは90度回転させる
+            img_hight, img_width, img_color = img.shape
+            if img_width < img_hight:
+                img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
             images.append(img)
 
     if not images:
