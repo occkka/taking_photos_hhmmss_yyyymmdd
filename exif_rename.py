@@ -3,6 +3,18 @@ import PIL.ExifTags as ExifTags
 from pathlib import Path
 import datetime
 import os
+import sys
+
+#exe
+def find_data_file(filename):
+   if getattr(sys, "frozen", False):
+       # The application is frozen
+       datadir = os.path.dirname(sys.executable)
+   else:
+       # The application is not frozen
+       # Change this bit to match where you store your data files:
+       datadir = os.path.dirname(sys.argv[0])
+   return os.path.join(datadir, filename)
 
 #get exif from image
 def get_exif_of_image(file):
@@ -17,7 +29,12 @@ def get_exif_of_image(file):
     except AttributeError:
         return {}
 
-for filename in Path("all_photos").glob("*.[Jj][Pp][Gg]"):
+#output_dir = "24h_images"
+output_dir = find_data_file("all_photos")
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+for filename in Path(find_data_file("for_sorting")).glob("*.[Jj][Pp][Gg]"):
     exif_dict = get_exif_of_image(filename)
 
     if "DateTimeOriginal" in exif_dict:
@@ -30,9 +47,5 @@ for filename in Path("all_photos").glob("*.[Jj][Pp][Gg]"):
         file_dateTime = datetime.datetime.fromtimestamp(bt)
 
     file_dateTime = file_dateTime.strftime("%H%M%S_%Y%m%d.jpg")
-    new_name = Path(filename).with_name(file_dateTime)
+    new_name = output_dir + '/' + file_dateTime
     filename.rename(new_name)
-
-
-
-
