@@ -49,7 +49,7 @@ for i in range(0, 24):
 
     if not images:
         #make a white image
-        white_img = Image.new("L", (1920, 1440), 255)
+        white_img = Image.new("L", (1920, 1440), 255) #4:3
         white_img.save(output_dir + '/' + tgt_h + '.jpg')
     else:
         # Arrange the photos in order horizontally
