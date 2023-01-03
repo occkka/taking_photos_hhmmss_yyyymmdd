@@ -2,6 +2,19 @@ import cv2
 import glob
 import datetime
 import random
+import os
+import sys
+
+#exe
+def find_data_file(filename):
+   if getattr(sys, "frozen", False):
+       # The application is frozen
+       datadir = os.path.dirname(sys.executable)
+   else:
+       # The application is not frozen
+       # Change this bit to match where you store your data files:
+       datadir = os.path.dirname(__file__)
+   return os.path.join(datadir, filename)
 
 def get_h_m_s(td):
     m, s = divmod(td.seconds, 60)
@@ -34,10 +47,14 @@ def add(img1, img2, top, left): #put img2 on img1 / img2の上にimg1を載せ�
     height, width = img1.shape[:2]
     img2[top:height + top, left:width + left] = img1
 
+output_dir = find_data_file("24h_video_output")
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
 # encoder(for mp4)
 fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
 # output file name, encoder, fps, size(fit to image size)
-video = cv2.VideoWriter('takingphotos_24h.mp4', fourcc, 1, (1080, 1920))
+video = cv2.VideoWriter(output_dir + '/takingphotos_24h.mp4', fourcc, 1, (1080, 1920))
 
 
 for i in range(86400):
@@ -50,13 +67,13 @@ for i in range(86400):
 
     time_now = hh + mm + ss + "_" #for file search / ファイル検索のため
 
-    files = glob.glob("all_photos/" + time_now + "*")
-    #print(files)
+    files = glob.glob(find_data_file("all_photos") + "/" + time_now + "*")
+    print(files)
 
-    black_back = cv2.imread("black_back.jpg")
+    black_back = cv2.imread(find_data_file("black_back.jpg"))
 
     if len(files) == 0:
-        frame = cv2.imread("white_back.jpg") #blank
+        frame = cv2.imread(find_data_file("white_back.jpg")) #blank
         frame = cv2.putText(frame, hh + ":" + mm + ":" + ss, (700, 960), cv2.FONT_HERSHEY_PLAIN, 5, (0, 0, 0), 5, cv2.LINE_AA)
     else:
         file = random.choice(files) #Select one image at random if multiple images are available / 2枚以上あるときランダムに取り出す

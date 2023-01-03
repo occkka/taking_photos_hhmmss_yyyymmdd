@@ -1,35 +1,58 @@
-import cv2
+import os
 import glob
+import sys
+from PIL import Image
 
-def hconcat_resize_min(im_list, interpolation=cv2.INTER_CUBIC):
-    h_min = min(im.shape[0] for im in im_list)
-    im_list_resize = [cv2.resize(im, (int(im.shape[1] * h_min / im.shape[0]), h_min), interpolation=interpolation)
+#exe
+def find_data_file(filename):
+   if getattr(sys, "frozen", False):
+       # The application is frozen
+       datadir = os.path.dirname(sys.executable)
+   else:
+       # The application is not frozen
+       # Change this bit to match where you store your data files:
+       datadir = os.path.dirname(sys.argv[0])
+   return os.path.join(datadir, filename)
+
+#resize by height
+def scale_to_height(img, height):
+    width = round(img.width * height / img.height)
+    return img.resize((width, height))
+
+def get_concat_h_multi_resize(im_list, resample=Image.BICUBIC):
+    min_height = min(im.height for im in im_list)
+    im_list_resize = [im.resize((int(im.width * min_height / im.height), min_height), resample=resample)
                       for im in im_list]
-    return cv2.hconcat(im_list_resize)
+    total_width = sum(im.width for im in im_list_resize)
+    dst = Image.new('RGB', (total_width, min_height))
+    pos_x = 0
+    for im in im_list_resize:
+        dst.paste(im, (pos_x, 0))
+        pos_x += im.width
+    return dst
 
-output_dir = "24h_images"
+output_dir = find_data_file("24h_images_output")
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 for i in range(0, 24):
     tgt_h = str(i).zfill(2)
-    files = glob.glob("all_photos/" + tgt_h + "*")
+    files = glob.glob(find_data_file("all_photos") + '/' + tgt_h + "*")
+    print(tgt_h + "時...")
 
     images = []
     for file in sorted(files):
-        img = cv2.imread(file)
+        img = Image.open(file)
         if img is not None:
-             # 縦向きは90度回転させる
-            img_hight, img_width, img_color = img.shape
-            if img_width < img_hight:
-                img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+            scale_to_height(img, 1440)
             images.append(img)
 
     if not images:
-        pass
+        #make a white image
+        white_img = Image.new("L", (1920, 1440), 255) #4:3
+        white_img.save(output_dir + '/' + tgt_h + '.jpg')
     else:
-        #Arrange the photos in order horizontally / 写真を横に並べる
-        im_h_resize = hconcat_resize_min(images)
-        #Set the size of the output image / 出力画像のサイズを決める
-        img_resize = cv2.resize(im_h_resize, dsize=(4618, 3464))
-        cv2.imwrite('24h_images/' + tgt_h + '.jpg', img_resize)
+        # Arrange the photos in order horizontally
+        img_all = get_concat_h_multi_resize(images)
+        img_all = img_all.resize((1920, 1440), Image.LANCZOS)
+        img_all.save(output_dir + '/' + tgt_h + '.jpg')

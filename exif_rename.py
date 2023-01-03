@@ -29,7 +29,6 @@ def get_exif_of_image(file):
     except AttributeError:
         return {}
 
-#output_dir = "24h_images"
 output_dir = find_data_file("all_photos")
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
@@ -42,8 +41,11 @@ for filename in Path(find_data_file("for_sorting")).glob("*.[Jj][Pp][Gg]"):
         file_dateTime = datetime.datetime.strptime(exif_dict["DateTimeOriginal"], "%Y:%m:%d %H:%M:%S")
     else:
         #use the last modified time if no exif is available
-        #change the code if you are using an OS other than mac
+        #change the code depending on OS
+        #mac
         bt = os.stat(filename).st_birthtime
+        #windows
+        #bt = os.path.getctime(filename)
         file_dateTime = datetime.datetime.fromtimestamp(bt)
 
     file_dateTime = file_dateTime.strftime("%H%M%S_%Y%m%d.jpg")
