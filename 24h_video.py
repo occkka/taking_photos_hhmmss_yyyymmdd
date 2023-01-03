@@ -54,6 +54,7 @@ if not os.path.exists(output_dir):
 # encoder(for mp4)
 fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
 # output file name, encoder, fps, size(fit to image size)
+#video = cv2.VideoWriter('takingphotos_24h.mp4', fourcc, 1, (1920, 1080))
 video = cv2.VideoWriter(output_dir + '/takingphotos_24h.mp4', fourcc, 1, (1080, 1920))
 
 
@@ -87,11 +88,11 @@ for i in range(86400):
         else: #portrait orientation/ 縦長
             pass
 
-        if img_width/img_hight < 1080/1920: #Slender than 16:9 → Fit to length 
+        if img_width/img_hight < 1080/1920: #Slender than 16:9 → Fit to length / 16:9より細長い→縦幅合わせ
             img = scale_to_height(img, 1920)
             img_hight, img_width, img_color = img.shape
             add(img, black_back, 0, int(1080 / 2 - img_width / 2))
-        else: #Squarer than 16:9 → Fit to width 
+        else: #Squarer than 16:9 → Fit to width / 16:9より寸胴→横幅合わせ
             img = scale_to_width(img, 1080)
             img_hight, img_width, img_color = img.shape
             add(img, black_back, int(1920 / 2 - img_hight / 2), 0)
