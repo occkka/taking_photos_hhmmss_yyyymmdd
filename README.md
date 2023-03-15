@@ -4,6 +4,7 @@
 
 ![IMG_5237_small](https://user-images.githubusercontent.com/47744839/225286371-d0a6fe38-fbb4-4c80-9e44-82ff8b3f8723.jpg)
 
+[Video](https://vimeo.com/799517857)
 
 Organise the image files according to the rules here  
 (EN)https://miyukioka.com/making-your-own-taking-photos-hhmmss-hhmmss-yyyymmdd-yyyymmdd/
