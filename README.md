@@ -44,7 +44,8 @@ Or Desktop App available from [here](https://miyukioka.com/making-your-own-takin
 ![IMG_5338](https://user-images.githubusercontent.com/47744839/225288257-edd0c0c8-0b3d-4ea4-8f74-7c5adfd50105.jpg)
 
 
-Project updates (IG):[@hhmmss.site](https://instagram.com/hhmmss.site?igshid=ZDdkNTZiNTM=). 
+Project updates (IG):[@hhmmss.site](https://instagram.com/hhmmss.site?igshid=ZDdkNTZiNTM=)
+
 Contact: takingphotos.hhmmss@gmail.com
 
  
