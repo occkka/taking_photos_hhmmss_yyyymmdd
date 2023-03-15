@@ -3,7 +3,6 @@
 *taking photos (hhmmss-hhmmss, yyyymmdd-yyyymmdd)* is a project that uses time data from smartphone photos to address individuals' biological rhythms, history and memories.
 
 ![IMG_5237_small](https://user-images.githubusercontent.com/47744839/225286371-d0a6fe38-fbb4-4c80-9e44-82ff8b3f8723.jpg)
-
 [Video](https://vimeo.com/799517857)
 
 Organise the image files according to the rules here  
@@ -17,4 +16,9 @@ Organise the image files according to the rules here
 4. To create a 24h-video, run "24h_video.py"
 5. Running 24h_video_realtime.py shows a window where the images are displayed according to the current time on your computer.  
   
+  
 ![315527389_1258930914965062_3541513846144344708_edit](https://user-images.githubusercontent.com/47744839/225287142-5103e232-a868-4d19-aa5f-53bd65caf796.jpg)
+
+![taking-photos_all_light-2](https://user-images.githubusercontent.com/47744839/225287980-c7337d44-1095-49ed-9991-2c3381a30414.jpg)
+
+
