@@ -19,6 +19,6 @@ Organise the image files according to the rules here
   
 ![315527389_1258930914965062_3541513846144344708_edit](https://user-images.githubusercontent.com/47744839/225287142-5103e232-a868-4d19-aa5f-53bd65caf796.jpg)
 
-![taking-photos_all_light-2](https://user-images.githubusercontent.com/47744839/225287980-c7337d44-1095-49ed-9991-2c3381a30414.jpg)
+![IMG_5338](https://user-images.githubusercontent.com/47744839/225288257-edd0c0c8-0b3d-4ea4-8f74-7c5adfd50105.jpg)
 
 
